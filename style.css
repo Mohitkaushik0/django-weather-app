@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+
+    background:
+        linear-gradient(
+            rgba(0, 25, 60, 0.55),
+            rgba(0, 40, 90, 0.65)
+        ),
+        url("https://images.unsplash.com/photo-1592210454359-9043f067919b?fm=jpg&q=60&w=3000&auto=format&fit=crop");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container {
+    width: 100%;
+    max-width: 650px;
+    text-align: center;
+}
+
+.container > h1 {
+    color: white;
+    font-size: 52px;
+    font-weight: 700;
+    margin-bottom: 35px;
+    letter-spacing: -1px;
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 35px;
+    padding: 8px;
+
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 18px;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+form input {
+    flex: 1;
+    min-width: 0;
+    height: 55px;
+
+    padding: 0 20px;
+
+    border: none;
+    outline: none;
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.95);
+    color: #222;
+
+    font-size: 16px;
+
+    transition: 0.3s ease;
+}
+
+form input::placeholder {
+    color: #888;
+}
+
+form input:focus {
+    background: white;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+form button {
+    height: 55px;
+    padding: 0 25px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #111827;
+    color: white;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+form button:hover {
+    background: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.weather-card {
+    width: 100%;
+    padding: 35px;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+
+    backdrop-filter: blur(15px);
+
+    animation: cardAppear 0.6s ease;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.top h2 {
+    color: #222;
+    font-size: 32px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.top p {
+    margin-top: 5px;
+    color: #777;
+    font-size: 14px;
+}
+
+.top img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+
+    filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.15));
+
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.middle {
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
+}
+
+.middle h1 {
+    color: #111827;
+    font-size: 75px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -3px;
+}
+
+.middle h3 {
+    margin-top: 15px;
+    color: #444;
+    font-size: 21px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.weather-card::after {
+    content: "Current weather condition";
+    display: block;
+    margin-top: 15px;
+    color: #999;
+    font-size: 12px;
+}
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 30px 15px;
+    }
+
+    .container > h1 {
+        font-size: 42px;
+    }
+
+    .weather-card {
+        padding: 28px;
+    }
+
+    .middle h1 {
+        font-size: 65px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    body {
+        align-items: flex-start;
+        padding-top: 50px;
+    }
+
+    .container > h1 {
+        font-size: 34px;
+        margin-bottom: 25px;
+    }
+
+    form {
+        flex-direction: column;
+        padding: 8px;
+    }
+
+    form input {
+        width: 100%;
+    }
+
+    form button {
+        width: 100%;
+    }
+
+    .weather-card {
+        padding: 22px;
+        border-radius: 24px;
+    }
+
+    .top {
+        align-items: flex-start;
+    }
+
+    .top h2 {
+        font-size: 25px;
+    }
+
+    .top img {
+        width: 95px;
+        height: 95px;
+    }
+
+    .middle {
+        margin-top: 5px;
+    }
+
+    .middle h1 {
+        font-size: 55px;
+        letter-spacing: -2px;
+    }
+
+    .middle h3 {
+        font-size: 17px;
+    }
+}
