@@ -1,0 +1,126 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather App</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>
+            🌤 Weather App
+        </h1>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input
+                type="text"
+                name="city"
+                placeholder="Enter City"
+                autocomplete="off"
+                required
+            >
+
+            <button type="submit">
+                Search →
+            </button>
+
+        </form>
+
+        {% if exception_occurred %}
+
+            <div class="weather-card">
+
+                <div class="middle">
+
+                    <h1>
+                        ☁️
+                    </h1>
+
+                    <h3>
+                        City not found
+                    </h3>
+
+                </div>
+
+            </div>
+
+        {% else %}
+
+            <div class="weather-card">
+
+                <div class="top">
+
+                    <div>
+
+                        <h2>
+                            {{ city }}
+                        </h2>
+
+                        <p>
+                            {{ day }}
+                        </p>
+
+                    </div>
+
+                    <img
+                        src="https://openweathermap.org/img/wn/{{ icon }}@4x.png"
+                        alt="Weather icon"
+                    >
+
+                </div>
+
+                <div class="middle">
+
+                    <h1>
+                        {{ temp }}°C
+                    </h1>
+
+                    <h3>
+                        {{ description }}
+                    </h3>
+
+                </div>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+    {% if exception_occurred %}
+
+    <script>
+
+        window.onload = function () {
+
+            alert("City information is not available to our API");
+
+        };
+
+    </script>
+
+    {% endif %}
+
+</body>
+
+</html>
